@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta La Goleta</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts - Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #0d6e6e;
+      --secondary-color: #f8f9fa;
+      --accent-color: #ff6b35;
+      --text-color: #333;
+      --light-text: #6c757d;
+      --bg-color: #ffffff;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      scroll-behavior: smooth;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-custom {
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-link-custom {
+      color: white;
+      font-weight: 500;
+      margin: 0 5px;
+      border-radius: 20px;
+      padding: 8px 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link-custom:hover, .nav-link-custom:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-top: 2.5rem;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+    
+    .menu-item {
+      border-left: 3px solid var(--primary-color);
+      padding-left: 15px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-item:hover {
+      border-left-color: var(--accent-color);
+      transform: translateX(5px);
+    }
+    
+    .item-name {
+      font-weight: 500;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+    
+    .price {
+      color: var(--accent-color);
+      font-weight: 700;
+    }
+    
+    .description {
+      color: var(--light-text);
+      font-size: 0.9rem;
+    }
+    
+    .allergens {
+      display: inline-block;
+      background-color: #f0f0f0;
+      color: #555;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 3px;
+    }
+    
+    .section-anchor {
+      padding-top: 90px;
+      margin-top: -90px;
+    }
+    
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .floating-btn:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    
+    .logo {
+      max-height: 60px;
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-custom {
+        overflow-x: auto;
+        white-space: nowrap;
+        display: block;
+      }
+      
+      .nav-link-custom {
+        display: inline-block;
+      }
+      
+      .section-anchor {
+        padding-top: 120px;
+        margin-top: -120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Carta La Goleta</h1>
+      <p class="lead">Sabores tradicionales con un toque moderno</p>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#bebidas"><i class="fas fa-glass-water me-1"></i> Bebidas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#picoteando"><i class="fas fa-utensils me-1"></i> Picoteando</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#ensaladas"><i class="fas fa-leaf me-1"></i> Ensaladas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#infantil"><i class="fas fa-child me-1"></i> Infantil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#pan"><i class="fas fa-bread-slice me-1"></i> Bocatas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#arroces"><i class="fas fa-utensil-spoon me-1"></i> Arroces</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#postres"><i class="fas fa-ice-cream me-1"></i> Postres</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="#alergenos"><i class="fas fa-allergies me-1"></i> Alérgenos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <!-- Sección Bebidas -->
+    <div class="section-anchor" id="bebidas"></div>
+    <h2 class="mb-4"><i class="fas fa-glass-water me-2"></i>Bebidas</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Agua pequeña</span>
+            <span class="price">2,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Agua grande</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Agua con gas</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Granizado Café</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Refrescos 20 cl.</span>
+            <span class="price">2,50 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Refrescos lata</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Nestea, Aquarius, Tónica, Bitter, Zumos</span>
+            <span class="price">2,50 €</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Granizado Limón</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Horchata</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Caña tirador</span>
+            <span class="price">2,50 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Tanque</span>
+            <span class="price">3,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Clara, Tercio, Tercio 0,0</span>
+            <span class="price">2,50 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Jarra de cerveza</span>
+            <span class="price">7,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Tinto de verano</span>
+            <span class="price">3,50 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Jarra tinto de verano</span>
+            <span class="price">7,00 €</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="d-flex justify-content-between">
+            <span class="item-name">Jarra de sangría</span>
+            <span class="price">10,00 €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Picoteando -->
+    <div class="section-anchor" id="picoteando"></div>
+    <h2 class="mb-4"><i class="fas fa-utensils me-2"></i>Picoteando</h2>
+    
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Huevos cabreados con patatas bastoncillo <span class="allergens">1</span><span class="allergens">3</span></span>
+        <span class="price">9,00 €</span>
+      </div>
+      <div class="description">Huevos rotos con salsa picante casera y crujientes patatas en bastón.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Patatas bravas La Goleta <span class="allergens">1</span></span>
+        <span class="price">7,50 €</span>
+      </div>
+      <div class="description">Patatas cortadas a mano con salsa brava tradicional.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Patatas Foster's Hollywood (jamón o bacon) <span class="allergens">1</span><span class="allergens">2</span></span>
+        <span class="price">10,50 €</span>
+      </div>
+      <div class="description">Crujientes patatas con bacon o jamón ibérico.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Papas arrugadas con mojo picón <span class="allergens">10</span></span>
+        <span class="price">10,00 €</span>
+      </div>
+      <div class="description">Papas canarias con salsa mojo rojo.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Choricitos a la sidra y chips de manzana <span class="allergens">1</span><span class="allergens">11</span></span>
+        <span class="price">10,50 €</span>
+      </div>
+      <div class="description">Chorizos en sidra con chips de manzana.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Morcilla de Burgos caramelizada <span class="allergens">1</span><span class="allergens">11</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+      <div class="description">Morcilla con toque dulce y crujiente.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Surtido mini-hamburguesas <span class="allergens">1</span><span class="allergens">2</span><span class="allergens">3</span><span class="allergens">9</span><span class="allergens">11</span></span>
+        <span class="price">17,00 €</span>
+      </div>
+      <div class="description">Mini hamburguesas variadas.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Surtido de croquetas caseras <span class="allergens">1</span><span class="allergens">2</span><span class="allergens">3</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+      <div class="description">Croquetas artesanales variadas.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Twister de langostinos y sirope de frutos rojos <span class="allergens">1</span><span class="allergens">3</span><span class="allergens">5</span></span>
+        <span class="price">9,00 €</span>
+      </div>
+      <div class="description">Langostinos en espiral con sirope afrutado.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Calamar a las 3 mayonesas <span class="allergens">3</span><span class="allergens">6</span><span class="allergens">9</span></span>
+        <span class="price">10,50 €</span>
+      </div>
+      <div class="description">Con mayonesa clásica, picante y de ajo.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Mejillones (vapor o ajillo) <span class="allergens">6</span></span>
+        <span class="price">9,00 €</span>
+      </div>
+      <div class="description">Mejillones frescos al vapor o con ajo.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Puntilla frita con ajos tiernos <span class="allergens">1</span><span class="allergens">6</span></span>
+        <span class="price">10,50 €</span>
+      </div>
+      <div class="description">Calamares pequeños fritos con ajos tiernos.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Boquerones fritos <span class="allergens">1</span><span class="allergens">4</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+      <div class="description">Boquerones rebozados y crujientes.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Fritura de pescado (3 tipos) <span class="allergens">1</span><span class="allergens">4</span><span class="allergens">6</span></span>
+        <span class="price">18,00 €</span>
+      </div>
+      <div class="description">Selección de pescados frescos fritos.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Pulpo braseado sobre parmentier de patata <span class="allergens">6</span></span>
+        <span class="price">18,00 €</span>
+      </div>
+      <div class="description">Pulpo a la brasa con puré suave de patata.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Tataky de atún con pico de gallo <span class="allergens">4</span><span class="allergens">9</span></span>
+        <span class="price">17,50 €</span>
+      </div>
+      <div class="description">Atún marinado con tomate, cebolla y cilantro.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Champiñones rellenos de queso azul y crujiente de jamón <span class="allergens">1</span><span class="allergens">2</span></span>
+        <span class="price">9,00 €</span>
+      </div>
+      <div class="description">Champiñones al horno con queso azul y jamón crujiente.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Alitas de pollo con salsa búfalo <span class="allergens">3</span><span class="allergens">9</span></span>
+        <span class="price">10,00 €</span>
+      </div>
+      <div class="description">Alitas jugosas y picantes con salsa casera.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Pollo crujiente y salsa ranchera <span class="allergens">1</span><span class="allergens">2</span><span class="allergens">3</span><span class="allergens">9</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Tiras de pollo empanado con salsa ranchera.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Cazuela de habitas con picadillo de jamón y huevo <span class="allergens">3</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Habitas tiernas con jamón y huevo cremoso.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Pan con tomate y alioli <span class="allergens">1</span><span class="allergens">3</span></span>
+        <span class="price">4,00 €</span>
+      </div>
+      <div class="description">Pan tostado con tomate rallado y alioli.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Pan (a partir de la segunda cesta) <span class="allergens">1</span></span>
+        <span class="price">1,00 €</span>
+      </div>
+    </div>
+
+    <!-- Sección Pensando en Verde -->
+    <div class="section-anchor" id="ensaladas"></div>
+    <h2 class="mb-4"><i class="fas fa-leaf me-2"></i>Pensando en verde</h2>
+    
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Ensalada Picadillo de Ventresca <span class="allergens">4</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Ventresca de atún, tomate fresco, cebolla y aliño especial que potencia cada sabor.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Ensalada Octopus <span class="allergens">6</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Pulpo tierno con tomate, maíz dulce y mezcla fresca de verduras de temporada.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Ensalada Griega <span class="allergens">2</span></span>
+        <span class="price">10,00 €</span>
+      </div>
+      <div class="description">Tomate, pepino, pimiento, cebolla, queso feta y aceitunas negras, una clásica mediterránea.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Ensalada de queso de cabra y nueces <span class="allergens">2</span><span class="allergens">7</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Lechuga fresca, tomate, queso de cabra, nueces y bacon, con un toque dulce de miel.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Ensalada Caprese <span class="allergens">2</span></span>
+        <span class="price">10,00 €</span>
+      </div>
+      <div class="description">Tomate maduro, mozzarella fresca y albahaca, sencilla y deliciosa.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Ensalada mixta <span class="allergens">3</span><span class="allergens">4</span></span>
+        <span class="price">9,00 €</span>
+      </div>
+      <div class="description">Lechuga, tomate, huevo cocido, atún, cebolla y aceitunas, un básico equilibrado.</div>
+    </div>
+
+    <!-- Sección Menú Infantil -->
+    <div class="section-anchor" id="infantil"></div>
+    <h2 class="mb-4"><i class="fas fa-child me-2"></i>Menú Infantil</h2>
+    <div class="alert alert-info mb-4">
+      <i class="fas fa-info-circle me-2"></i>Incluye refresco o agua pequeña
+    </div>
+    
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Nuggets de pollo y patatas fritas <span class="allergens">1</span><span class="allergens">3</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Donuts de merluza y patatas fritas <span class="allergens">1</span><span class="allergens">3</span><span class="allergens">4</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Canelón casero <span class="allergens">1</span><span class="allergens">2</span><span class="allergens">3</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+    </div>
+
+    <!-- Sección Entre Pan y Pan -->
+    <div class="section-anchor" id="pan"></div>
+    <h2 class="mb-4"><i class="fas fa-bread-slice me-2"></i>Entre Pan y Pan</h2>
+    
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Hamburguesa Vegana <span class="allergens">1</span><span class="allergens">8</span></span>
+        <span class="price">8,50 €</span>
+      </div>
+      <div class="description">Hamburguesa vegetal con ingredientes frescos y pan artesanal.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Bocata Choripan Argentino <span class="allergens">1</span><span class="allergens">11</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+      <div class="description">Chorizo argentino a la parrilla en pan crujiente, con chimichurri casero.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Bocata Campera con Lomo <span class="allergens">1</span></span>
+        <span class="price">8,50 €</span>
+      </div>
+      <div class="description">Lomo a la plancha con pimientos y pan rústico, un clásico contundente.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Bocata Pepito de Ternera <span class="allergens">1</span><span class="allergens">3</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+      <div class="description">Ternera jugosa y tierna en pan artesanal, con un toque de alioli.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Hamburguesa de Pollo <span class="allergens">1</span><span class="allergens">2</span></span>
+        <span class="price">9,00 €</span>
+      </div>
+      <div class="description">Pechuga de pollo rebozada, con lechuga y tomate.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Hamburguesa "La Goleta" <span class="allergens">1</span><span class="allergens">2</span><span class="allergens">3</span></span>
+        <span class="price">9,50 €</span>
+      </div>
+      <div class="description">Carne de ternera seleccionada con queso, bacon y salsa especial.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Perrito Caliente <span class="allergens">1</span><span class="allergens">9</span></span>
+        <span class="price">8,50 €</span>
+      </div>
+      <div class="description">Salchicha tradicional en pan suave con ketchup y mostaza.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Bocata de Calamar <span class="allergens">1</span><span class="allergens">6</span><span class="allergens">9</span></span>
+        <span class="price">8,50 €</span>
+      </div>
+      <div class="description">Calamares fritos en pan artesanal, con mayonesa suave.</div>
+    </div>
+
+    <!-- Sección Arroces -->
+    <div class="section-anchor" id="arroces"></div>
+    <h2 class="mb-4"><i class="fas fa-utensil-spoon me-2"></i>Arroces</h2>
+    <div class="alert alert-info mb-4">
+      <i class="fas fa-info-circle me-2"></i>Precio por persona, mínimo 2 personas
+    </div>
+    
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Paella Valenciana <span class="allergens">10</span><span class="allergens">11</span></span>
+        <span class="price">13,00 €</span>
+      </div>
+      <div class="description">Clásica paella con pollo, conejo y verduras frescas de temporada.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Paella a la Jardinera <span class="allergens">10</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Arroz con verduras variadas, perfecto para vegetarianos.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz del Señoret <span class="allergens">4</span><span class="allergens">5</span><span class="allergens">6</span></span>
+        <span class="price">14,00 €</span>
+      </div>
+      <div class="description">Arroz meloso con mariscos pelados para comer sin complicaciones.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Paella de Marisco <span class="allergens">5</span><span class="allergens">6</span></span>
+        <span class="price">14,00 €</span>
+      </div>
+      <div class="description">Mariscos frescos y sabrosos, con el característico sabor a mar.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Paella Mar y Tierra <span class="allergens">4</span><span class="allergens">5</span><span class="allergens">6</span><span class="allergens">10</span></span>
+        <span class="price">14,00 €</span>
+      </div>
+      <div class="description">Combinación de carnes y mariscos en un arroz sabroso y jugoso.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz Negro <span class="allergens">6</span></span>
+        <span class="price">14,00 €</span>
+      </div>
+      <div class="description">Arroz con tinta de calamar, sabor intenso y textura melosa.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz a Banda <span class="allergens">4</span><span class="allergens">6</span><span class="allergens">3</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Arroz cocido en caldo de pescado, servido con alioli y pescado aparte.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz de Gamba Roja y Galera <span class="allergens">5</span></span>
+        <span class="price">16,00 €</span>
+      </div>
+      <div class="description">Arroz con gamba roja y galera, marisco de alta calidad y sabor potente.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz Caldoso o Meloso de Sepia y Gambas <span class="allergens">5</span><span class="allergens">6</span></span>
+        <span class="price">15,00 €</span>
+      </div>
+      <div class="description">Arroz jugoso con sepia y gambas frescas, un clásico que no defrauda.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz de Bogavante <span class="allergens">5</span></span>
+        <span class="price">21,00 €</span>
+      </div>
+      <div class="description">Arroz caldoso con bogavante fresco, plato de lujo y sabor exquisito.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz de Bacalao y Alcachofas <span class="allergens">4</span></span>
+        <span class="price">14,00 €</span>
+      </div>
+      <div class="description">Arroz con bacalao desmigado y alcachofas, combinación tradicional y sabrosa.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Arroz Caldoso de Langosta <span class="allergens">5</span></span>
+        <span class="price">21,00 €</span>
+      </div>
+      <div class="description">Caldo intenso con langosta fresca, arroz meloso y muy sabroso.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Fideuà <span class="allergens">1</span><span class="allergens">5</span><span class="allergens">6</span><span class="allergens">3</span></span>
+        <span class="price">11,00 €</span>
+      </div>
+      <div class="description">Plato similar a la paella pero con fideos, mariscos y alioli.</div>
+    </div>
+
+    <!-- Sección Postres -->
+    <div class="section-anchor" id="postres"></div>
+    <h2 class="mb-4"><i class="fas fa-ice-cream me-2"></i>Postres</h2>
+    
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Tarta Variada <span class="allergens">1</span><span class="allergens">2</span><span class="allergens">3</span><span class="allergens">7</span></span>
+        <span class="price">5,00 €</span>
+      </div>
+      <div class="description">Consulta al camarero por las opciones del día, todas caseras y deliciosas.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Fruta de temporada</span>
+        <span class="price">4,00 €</span>
+      </div>
+      <div class="description">Fruta fresca seleccionada según temporada.</div>
+    </div>
+    <div class="menu-item">
+      <div class="d-flex justify-content-between">
+        <span class="item-name">Helados <span class="allergens">2</span><span class="allergens">3</span></span>
+      </div>
+      <div class="description">Consulta sabores y precios con el camarero.</div>
+    </div>
+
+    <!-- Sección Alérgenos -->
+    <div class="section-anchor" id="alergenos"></div>
+    <h2 class="mb-4"><i class="fas fa-allergies me-2"></i>Listado de Alérgenos</h2>
+    
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li><span class="badge bg-secondary me-2">1</span> Gluten</li>
+              <li><span class="badge bg-secondary me-2">2</span> Lácteos</li>
+              <li><span class="badge bg-secondary me-2">3</span> Huevos</li>
+              <li><span class="badge bg-secondary me-2">4</span> Pescado</li>
+              <li><span class="badge bg-secondary me-2">5</span> Crustáceos</li>
+              <li><span class="badge bg-secondary me-2">6</span> Moluscos</li>
+              <li><span class="badge bg-secondary me-2">7</span> Frutos secos</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-unstyled">
+              <li><span class="badge bg-secondary me-2">8</span> Soja</li>
+              <li><span class="badge bg-secondary me-2">9</span> Mostaza</li>
+              <li><span class="badge bg-secondary me-2">10</span> Apio</li>
+              <li><span class="badge bg-secondary me-2">11</span> Sulfitos</li>
+              <li><span class="badge bg-secondary me-2">12</span> Sésamo</li>
+              <li><span class="badge bg-secondary me-2">13</span> Cacahuetes</li>
+              <li><span class="badge bg-secondary me-2">14</span> Altramuces</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <a href="#" class="floating-btn">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© 2023 La Goleta - Todos los derechos reservados</p>
+      <p class="mb-0"><small>Los precios incluyen IVA</small></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
